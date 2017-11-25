@@ -13,15 +13,15 @@
     <!-- Right side column. Contains the navbar and content of the page -->
     <aside class="right-side">
         <section class="content-header">
-            <h1>All Employee</h1>
+            <h1>All Members</h1>
             <ol class="breadcrumb">
                 <li>
-                    <a href="index.html">
+                    <a href="/backend">
                         <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
                         Dashboard
                     </a>
                 </li>
-                <li class="active">All Employee</li>
+                <li class="active">All Members</li>
             </ol>
         </section>
         <section class="content">
@@ -32,7 +32,7 @@
                             <div class="panel-title pull-left">
                                 <div class="caption">
                                     <i class="livicon"  data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                                    Employee
+                                    Members
                                 </div>
 
                             </div>
@@ -47,26 +47,36 @@
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>User Name</th>
-                                    <th>User E-mail</th>
+                                    <th>E-mail</th>
                                     <th>Type</th>
-                                    <th>Created By</th>
-                                    <th>Verify</th>
+                                    <th>Birthday</th>
+                                    <th>phone</th>
+                                    {{--<th>address</th>--}}
+                                    <th>postalcode</th>
+                                    <th>Total Members</th>
+                                    <th>Membership Number</th>
+                                    <th>Expiration Date</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($employee as $emp)
+                                @foreach($allMember as $member)
                                 <tr>
-                                    <td>{{ $emp->first_name }}</td>
-                                    <td>{{ $emp->last_name }}</td>
-                                    <td>{{ $emp->username }}</td>
-                                    <td>{{ $emp->email }}</td>
-                                    <td>{{ $emp->type }}</td>
-                                    <td>{{ $emp->created_by }}</td>
-                                    <td>{{ $emp->verify }}</td>
+                                    <td>{{ $member->first_name }}</td>
+                                    <td>{{ $member->last_name }}</td>
+                                    <td>{{ $member->username }}</td>
+                                    <td>{{ $member->email }}</td>
+                                    <td>{{ $member->type }}</td>
+                                    <td>{{ $member->date_of_birth }}</td>
+                                    <td>{{ $member->phone }}</td>
+                                    {{--<td>{{ $member->address }}</td>--}}
+                                    <td>{{ $member->postalcode }}</td>
+                                    <td>{{ $member->total_members }}</td>
+                                    <td>{{ $member->id }}</td>
+                                    <td>{{ $member->expiration_date }}</td>
                                     <td>
                                         {{--<a href="{{ route('edit-user-data', $emp->id) }}" ><button type="button" class="btn btn-primary">Edit</button></a>--}}
-                                        <a href="{{ route('delete-user-data', $emp->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
+                                        <a href="{{ route('delete-member-data', $member->id) }}" ><button type="button" class="btn btn-danger">Delete</button></a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -11,14 +11,21 @@ use App\Member;
 class MemberController extends Controller
 {
 
+	public function __construct() {
+	$this->user = new User();
+	}
 
 	public function showMember(){
-		$member = User::where('created_by', Auth()->id())
-		                ->where('type', '!=','admin')
-		                ->where('type', '!=','superuser')->get();
-		$totalMembers = Member::where('user_id', Auth()->id())->count();
-		dd($member->Members());
-		return view('backend.Members.showmember',compact('member'));
+
+//		$relation = User::find(5)->Members;
+//		dd($relation);
+//		$member = $this->user->where('id', Auth()->id())->with('Members');
+		$allMember = $this->user->where('created_by', Auth()->id())
+		                     ->where('type','!=','superUser')
+		                     ->where('type','!=','admin')->get();
+//		$totalMembers = Member::where('user_id', Auth()->id())->count();
+		//dd($member);
+		return view('backend.Members.showmember',compact('allMember'));
 	}
 	public function saveMember(Request $request){
 
@@ -37,7 +44,7 @@ class MemberController extends Controller
 		]);
 		if ($request->hasFile('profile_image')) {
 			$file = $request->profile_image;
-			$filename  = $request->first_name.$request->last_name.time() . '.' . $file->getClientOriginalExtension();
+			$filename  = trim($request->first_name.$request->last_name).time() . '.' . $file->getClientOriginalExtension();
 			$path = public_path('profilepics/' . $filename);
 			\Image::make($file->getRealPath())->resize(90, 90)->save($path);
 		}
@@ -75,4 +82,14 @@ class MemberController extends Controller
 		}
 		return redirect()->route('showmember');
 	}
+
+	/*Delete Employee
+	*/
+	public function deletMember($MemberId){
+		User::find($MemberId)->delete();
+		return redirect()->route('showmember');
+	}
+
+
+
 }

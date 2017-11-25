@@ -10,131 +10,126 @@
 @section('content')
     <!-- Right side column. Contains the navbar and content of the page -->
     <aside class="right-side">
+        <!-- Main content -->
         <section class="content-header">
-            <h1>Add New User</h1>
+            <h1>Welcome to Dashboard</h1>
             <ol class="breadcrumb">
-                <li>
-                    <a href="index.html">
-                        <i class="livicon" data-name="home" data-size="16" data-color="#000"></i>
-                        Dashboard
+                <li class="active">
+                    <a href="#">
+                        <i class="livicon" data-name="home" data-size="16" data-color="#333" data-hovercolor="#333"></i>
+                        Home
                     </a>
                 </li>
-                <li>Users</li>
-                <li class="active">Add New User</li>
             </ol>
         </section>
         <section class="content">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">
-                                <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i>
-                                Add New User
-                            </h3>
-                            <span class="pull-right clickable">
-                                    <i class="glyphicon glyphicon-chevron-up"></i>
-                                </span>
-                        </div>
-                        <div class="panel-body">
-                            <!--main content-->
-                            <div class="row">
-
-                                <div class="col-md-12">
-
-                                    <!-- BEGIN FORM WIZARD WITH VALIDATION -->
-                                    <form class="form-wizard" action="#" method="POST">
-                                        <h1>User Profile</h1>
-                                        <section>
-                                            <h2 class="hidden">&nbsp;</h2>
-                                            <div class="form-group">
-                                                <label for="userName">User Name *</label>
-                                                <input id="userName" name="userName" type="text" placeholder="Enter your name" class="form-control required">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="password">Password *</label>
-                                                <input id="password" name="password" type="password" placeholder="Enter your password" class="form-control required">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="confirm">Confirm Password *</label>
-                                                <input id="confirm" name="confirm" type="password" placeholder="Confirm your password " class="form-control required">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="email">Email *</label>
-                                                <input id="email" name="email" placeholder="Enter your Email" type="text" class="form-control required email">
-                                            </div>
-                                            <div class="">
-                                                <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required">
-                                                <label for="acceptTerms">I have read terms and conditions</label>
-                                            </div>
-
-                                            <p>(*) Mandatory</p>
-                                        </section>
-                                        <h1>Profile Details</h1>
-                                        <section>
-                                            <h2 class="hidden">&nbsp;</h2>
-                                            <div class="form-group">
-                                                <label for="name">First Name *</label>
-                                                <input id="name" name="name" placeholder="Enter your First name"type="text" class="form-control required">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="surname">Last Name *</label>
-                                                <input id="surname" name="surname" type="text" placeholder=" Enter your Last name" class="form-control required">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="email">Gender</label>
-                                                <select class="form-control" title="Select an account type...">
-                                                    <option>Select</option>
-                                                    <option>Male</option>
-                                                    <option>Female</option>
-
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="address">Address</label>
-                                                <input id="address" name="address" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="age">Age *</label>
-                                                <input id="age" name="age" type="text" class="form-control required number">
-                                            </div>
-                                            <p>(*) Mandatory</p>
-                                        </section>
-
-                                        <h1>Finish</h1>
-
-                                        <section>
-                                            <div class="form-group">
-                                                <label>Home Number</label>
-                                                <input type="text" placeholder="Home number" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label >Personal Number</label>
-                                                <input type="text" placeholder="Personal number" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Alternate Number</label>
-                                                <input type="text" placeholder="Alternate number" class="form-control">
-                                            </div>
-
-                                            <h2 class="hidden">&nbsp;</h2>
-                                            <span>Terms and Conditions</span>
-                                            <div class="pos-rel p-l-30">
-                                                <input id="acceptTerms" name="acceptTerms" type="checkbox" class="pos-rel p-l-30 required">
-                                                <label for="acceptTerms"> I agree with the Terms and Conditions.</label>
-                                            </div>
-                                        </section>
-                                    </form>
-                                    <!-- END FORM WIZARD WITH VALIDATION -->
+                <div class="col-lg-3 col-md-6 col-sm-6 margin_10 animated fadeInLeftBig">
+                    <!-- Trans label pie charts strats here-->
+                    <div class="lightbluebg no-radius">
+                        <div class="panel-body squarebox square_boxs">
+                            <div class="col-xs-12 pull-left nopadmar">
+                                <div class="row">
+                                    <div class="square_box col-xs-7 text-right">
+                                        <span>Views Today</span>
+                                        <div class="number" id="myTargetElement1"></div>
+                                    </div>
+                                    <i class="livicon  pull-right" data-name="eye-open" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <small class="stat-label">Last Week</small>
+                                        <h4 id="myTargetElement1.1"></h4>
+                                    </div>
+                                    <div class="col-xs-6 text-right">
+                                        <small class="stat-label">Last Month</small>
+                                        <h4 id="myTargetElement1.2"></h4>
+                                    </div>
                                 </div>
                             </div>
-                            <!--main content end-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 margin_10 animated fadeInUpBig">
+                    <!-- Trans label pie charts strats here-->
+                    <div class="redbg no-radius">
+                        <div class="panel-body squarebox square_boxs">
+                            <div class="col-xs-12 pull-left nopadmar">
+                                <div class="row">
+                                    <div class="square_box col-xs-7 pull-left">
+                                        <span>Today's Sales</span>
+                                        <div class="number" id="myTargetElement2"></div>
+                                    </div>
+                                    <i class="livicon pull-right" data-name="piggybank" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <small class="stat-label">Last Week</small>
+                                        <h4 id="myTargetElement2.1"></h4>
+                                    </div>
+                                    <div class="col-xs-6 text-right">
+                                        <small class="stat-label">Last Month</small>
+                                        <h4 id="myTargetElement2.2"></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-md-6 margin_10 animated fadeInDownBig">
+                    <!-- Trans label pie charts strats here-->
+                    <div class="goldbg no-radius">
+                        <div class="panel-body squarebox square_boxs">
+                            <div class="col-xs-12 pull-left nopadmar">
+                                <div class="row">
+                                    <div class="square_box col-xs-7 pull-left">
+                                        <span>Subscribers</span>
+                                        <div class="number" id="myTargetElement3"></div>
+                                    </div>
+                                    <i class="livicon pull-right" data-name="archive-add" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <small class="stat-label">Last Week</small>
+                                        <h4 id="myTargetElement3.1"></h4>
+                                    </div>
+                                    <div class="col-xs-6 text-right">
+                                        <small class="stat-label">Last Month</small>
+                                        <h4 id="myTargetElement3.2"></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 margin_10 animated fadeInRightBig">
+                    <!-- Trans label pie charts strats here-->
+                    <div class="palebluecolorbg no-radius">
+                        <div class="panel-body squarebox square_boxs">
+                            <div class="col-xs-12 pull-left nopadmar">
+                                <div class="row">
+                                    <div class="square_box col-xs-7 pull-left">
+                                        <span>Registered Users</span>
+                                        <div class="number" id="myTargetElement4"></div>
+                                    </div>
+                                    <i class="livicon pull-right" data-name="users" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <small class="stat-label">Last Week</small>
+                                        <h4 id="myTargetElement4.1"></h4>
+                                    </div>
+                                    <div class="col-xs-6 text-right">
+                                        <small class="stat-label">Last Month</small>
+                                        <h4 id="myTargetElement4.2"></h4>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--row end-->
+            <!--/row-->
         </section>
     </aside>
 @endsection

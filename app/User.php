@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Member;
 
 class User extends Authenticatable
 {
@@ -30,7 +31,8 @@ class User extends Authenticatable
 
 
     public function Members(){
-	    return $this->hasMany('App\Member', 'user_id', 'id');
+	    return $this->hasMany('App\Member')->get();
+//	    return $this->hasMany(Member::class);
     }
 
 }

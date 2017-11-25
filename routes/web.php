@@ -11,23 +11,57 @@
 |
 */
 
-Route::get('/', function () {return view('auth.login');});
-Route::get('/login', function () {return view('auth.login');});
 
-Route::get('/backend', function () { return view('backend.dashboard');});
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('save-employee', 'EmployeeController@saveEmployee')->name('save-employee');
-Route::get('add-employee', function(){return view('backend.user.addemployeeform');})->name('addemployee');
-Route::get('show-employee', 'EmployeeController@showEmployee')->name('showemployee');
-Route::get('Delete-User/{user_id}', 'EmployeeController@deletUser')->name('delete-user-data');
-Route::get('Edit-User/{user_id}', 'EmployeeController@EditUser')->name('edit-user-data');
+Route::group(array('prefix' => 'backend'), function ()
+{
+	Auth::routes();
+	Route::get('/', function () {
+		if (Auth::user()) {return redirect('/backend/dashboard');}
+		return view('auth.login');});
 
-Route::get('add-member', function(){return view('backend.Members.addemember');})->name('add-member-form');
-Route::post('save-member', 'MemberController@saveMember')->name('save-member');
-Route::get('show-member', 'MemberController@showMember')->name('showmember');
+	Route::get('dashboard', function () { return view('backend.dashboard');});
 
+	Route::post('save-employee', 'EmployeeController@saveEmployee')->name('save-employee');
+	Route::get('add-employee', function(){return view('backend.user.addemployeeform');})->name('addemployee');
+	Route::get('show-employee', 'EmployeeController@showEmployee')->name('showemployee');
+	Route::get('delete-user/{user_id}', 'EmployeeController@deletUser')->name('delete-user-data');
+	Route::get('Edit-User/{user_id}', 'EmployeeController@EditUser')->name('edit-user-data');
+
+	Route::get('add-member', function(){return view('backend.Members.addemember');})->name('add-member-form');
+	Route::post('save-member', 'MemberController@saveMember')->name('save-member');
+	Route::get('show-member', 'MemberController@showMember')->name('showmember');
+	Route::get('delete-member/{user_id}', 'MemberController@deletMember')->name('delete-member-data');
+
+//	Route::group(array('middleware' => 'myAuth'), function () {
+//	}
+});
+
+Route::get('/', function () {
+	if (Auth::user()) {return redirect('/backend/dashboard');}
+	return view('auth.login');});
+
+//Route::get('/', function () {return view('auth.login');});
+//Route::get('/login', function () {return view('auth.login');});
+//
+//Route::get('/backend', function () { return view('backend.dashboard');});
+//
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index')->name('home');
+//Route::post('save-employee', 'EmployeeController@saveEmployee')->name('save-employee');
+//Route::get('add-employee', function(){return view('backend.user.addemployeeform');})->name('addemployee');
+//Route::get('show-employee', 'EmployeeController@showEmployee')->name('showemployee');
+//Route::get('Delete-User/{user_id}', 'EmployeeController@deletUser')->name('delete-user-data');
+//Route::get('Edit-User/{user_id}', 'EmployeeController@EditUser')->name('edit-user-data');
+//
+//Route::get('add-member', function(){return view('backend.Members.addemember');})->name('add-member-form');
+//Route::post('save-member', 'MemberController@saveMember')->name('save-member');
+//Route::get('show-member', 'MemberController@showMember')->name('showmember');
+//Route::get('delete-member/{user_id}', 'MemberController@deletMember')->name('delete-member-data');
+//
+//
+//
 
 
