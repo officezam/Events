@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Validator;
 use App\User;
 use Intervention\Image;
 use App\Member;
+use App\Jobs\SendVerificationEmail;
+use App\Jobs\ExpireEmailLink;
+use Mail;
+use App\Mail\verifyEmail;
+
 
 class MemberController extends Controller
 {
@@ -29,22 +35,22 @@ class MemberController extends Controller
 	}
 	public function saveMember(Request $request){
 
-		$validatedData = $request->validate([
-			'first_name' => 'required|string|max:255',
-			'last_name' => 'required|string|max:255',
-			'email' => 'required|string|email|max:255|unique:users',
-			'phone' => 'required',
-			'dob' => 'required',
-			'expiration_date' => 'required',
-			'postalcode' => 'required',
-			'profile_image' => 'required|image',
-			'password'  =>  'required|min:6',
-			'cpassword'  =>  'required|same:password',
-
-		]);
+//		$validatedData = $request->validate([
+//			'first_name' => 'required|string|max:255',
+//			'last_name' => 'required|string|max:255',
+//			'email' => 'required|string|email|max:255|unique:users',
+//			'phone' => 'required',
+//			'dob' => 'required',
+//			'expiration_date' => 'required',
+//			'postalcode' => 'required',
+//			'profile_image' => 'required|image',
+//			'password'  =>  'required|min:6',
+//			'cpassword'  =>  'required|same:password',
+//
+//		]);
 		if ($request->hasFile('profile_image')) {
 			$file = $request->profile_image;
-			$filename  = trim($request->first_name.$request->last_name).time() . '.' . $file->getClientOriginalExtension();
+			$filename  = trim($request->first_name.$request->last_name).time().'.'.$file->getClientOriginalExtension();
 			$path = public_path('profilepics/' . $filename);
 			\Image::make($file->getRealPath())->resize(90, 90)->save($path);
 		}
@@ -66,10 +72,14 @@ class MemberController extends Controller
 			'total_members' => '',
 			'total_price' => '',
 			'membership_number' => '',
+			'verifytoken' => str_random(40),
+			'status' => 0,
 			'expiration_date' => $request->expiration_date
 		]);
+
 		$id = $userSaved->id;
 		$count = 0;
+		if(isset($request->M_first_name)){
 		foreach($request->M_first_name as $key => $value)
 		{
 			Member::create([
@@ -80,7 +90,23 @@ class MemberController extends Controller
 			]);
 			$count++;
 		}
+		}
+
+//		$request->remember_token = md5(time() . $request->email);
+//		$UserData   = User::find($id);
+//		$this->sendEmail($UserData);
+
 		return redirect()->route('showmember');
+	}
+
+
+	public function sendEmail($thisUser){
+
+		Mail::to($thisUser->email)->send(new verifyEmail($thisUser));
+	}
+
+	public function verifyMemberbyEmail(){
+
 	}
 
 	/*Delete Employee

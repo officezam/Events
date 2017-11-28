@@ -42,6 +42,8 @@ Route::get('/', function () {
 	if (Auth::user()) {return redirect('/backend/dashboard');}
 	return view('auth.login');});
 
+
+Route::get('verify/{email}/{token}' , 'MemberController@verifyMemberbyEmail')->name('sendEmailDone');
 //Route::get('/', function () {return view('auth.login');});
 //Route::get('/login', function () {return view('auth.login');});
 //

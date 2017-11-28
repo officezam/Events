@@ -30,6 +30,8 @@ class UsersTableSeeder extends Seeder
 				'membership_number' => '',
 				'expiration_date' => '1993-02-15',
 				'profile_image' => '',
+				'verifytoken' => '',
+				'status' => 1,
 			]);
 		DB::table('users')->insert(
 			[
@@ -50,6 +52,8 @@ class UsersTableSeeder extends Seeder
 				'membership_number' => '',
 				'expiration_date' => '1993-02-15',
 				'profile_image' => '',
+				'verifytoken' => '',
+				'status' => 1,
 			]);
 		DB::table('users')->insert(
 			[
@@ -70,6 +74,8 @@ class UsersTableSeeder extends Seeder
 				'membership_number' => '',
 				'expiration_date' => '1993-02-15',
 				'profile_image' => '',
+				'verifytoken' => '',
+				'status' => 1,
 			]
 		);
 	}

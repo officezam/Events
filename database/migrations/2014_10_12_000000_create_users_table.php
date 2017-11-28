@@ -31,6 +31,8 @@ class CreateUsersTable extends Migration
             $table->string('total_members');
             $table->string('total_price');
             $table->string('membership_number');
+            $table->string('verifytoken');
+            $table->boolean('status');
 	        $table->date('expiration_date');
 	        $table->softDeletes();
             $table->rememberToken();
