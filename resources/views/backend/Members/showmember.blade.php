@@ -2,9 +2,9 @@
 
 <!--page level css -->
 @section('pagecss')
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/dataTables.colReorder.min.css')}}" />--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/dataTables.scroller.min.css')}}" />--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/dataTables.bootstrap.css')}}" />--}}
+    {{--    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/dataTables.colReorder.min.css')}}" />--}}
+    {{--    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/dataTables.scroller.min.css')}}" />--}}
+    {{--    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/dataTables.bootstrap.css')}}" />--}}
 
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/jquery.dataTables.min.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/buttons.dataTables.min.css')}}" />
@@ -75,6 +75,7 @@
                                     <th>Total Members</th>
                                     <th>Membership Number</th>
                                     <th>Expiration Date</th>
+                                    <th>Membership Card</th>
                                     <th>Verify</th>
                                     <th>Action</th>
                                 </tr>
@@ -93,6 +94,11 @@
                                         <td>{{ $member->total_members }}</td>
                                         <td>{{ $member->membership_number }}</td>
                                         <td>{{ $member->expiration_date }}</td>
+                                        <td>
+                                            <a href="{{ route('membership-card', $member->id) }}" >
+                                                <button type="button" class="btn btn-info">Send Verification</button>
+                                            </a>
+                                        </td>
                                         <td>
                                             @if($member->verify == 1)
 
@@ -123,6 +129,7 @@
                                     <th>Total Members</th>
                                     <th>Membership Number</th>
                                     <th>Expiration Date</th>
+                                    <th>Membership Card</th>
                                     <th>Verify</th>
                                     <th>Action</th>
                                 </tr>
@@ -145,7 +152,7 @@
     {{--<script type="text/javascript" src="{{ asset('vendors/datatables/dataTables.scroller.min.js')}}"></script>--}}
     {{--<script type="text/javascript" src="{{ asset('vendors/datatables/dataTables.bootstrap.js')}}"></script>--}}
 
-{{--    <script type="text/javascript" src="{{ asset('js/pages/jquery-1.12.4.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{ asset('js/pages/jquery-1.12.4.js')}}"></script>--}}
     <script type="text/javascript" src="{{ asset('js/pages/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('js/pages/dataTables.buttons.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('js/pages/buttons.flash.min.js')}}"></script>

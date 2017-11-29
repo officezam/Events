@@ -133,6 +133,11 @@ class MemberController extends Controller
 		return redirect()->route('showmember');
 	}
 
+	public function membershipCard($memberId){
+//		dd($memberId);
+		return view('backend.Members.membershipcard');
+
+	}
 	/*Delete Employee
 	*/
 	public function deletMember($MemberId){

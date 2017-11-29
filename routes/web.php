@@ -32,6 +32,7 @@ Route::group(array('prefix' => 'backend'), function ()
 	Route::get('add-member', function(){return view('backend.Members.addemember');})->name('add-member-form');
 	Route::post('save-member', 'MemberController@saveMember')->name('save-member');
 	Route::get('show-member', 'MemberController@showMember')->name('showmember');
+	Route::get('membership-card/{member_id}', 'MemberController@membershipCard')->name('membership-card');
 	Route::get('delete-member/{member_id}', 'MemberController@deletMember')->name('delete-member-data');
 	Route::get('send-verification/{member_id}', 'MemberController@sendVerification')->name('send-verification');
 

@@ -8,8 +8,8 @@
             "order": [
                 [0, "desc"]
             ],
-            "scrollY": true,
-            "deferRender": true
+            "sScrollX": "100%",
+            "bScrollCollapse": true
         });
 
 
