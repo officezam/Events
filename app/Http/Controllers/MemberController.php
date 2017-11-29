@@ -15,7 +15,7 @@ use Mail;
 use App\Mail\verifyEmail;
 use Illuminate\Support\Facades\DB;
 use Plivo;
-
+use Milon\Barcode\DNS1D;
 
 class MemberController extends Controller
 {
@@ -134,8 +134,15 @@ class MemberController extends Controller
 	}
 
 	public function membershipCard($memberId){
-//		dd($memberId);
-		return view('backend.Members.membershipcard');
+//		echo DNS1D::getBarcodeSVG("4445645656", "PHARMA2T");
+//		echo DNS1D::getBarcodeHTML("4445645656", "PHARMA2T");
+//		echo '<img src="data:image/png,' . DNS1D::getBarcodePNG("4", "C39+") . '" alt="barcode"   />';
+//			echo DNS1D::getBarcodePNGPath("4445645656", "PHARMA2T");
+//		echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG("4", "C39+") . '" alt="barcode"   />';
+//				dd($memberId);
+		$barCode = DNS1D::getBarcodePNG("4", "C39+");
+		$member  = $this->user->find($memberId);
+		return view('backend.Members.membershipcard', compact('barCode','member'));
 
 	}
 	/*Delete Employee

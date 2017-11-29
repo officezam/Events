@@ -1,5 +1,4 @@
 @extends('backend.layouts.app')
-
 <!--page level css -->
 @section('pagecss')
     <!-- daterange picker -->
@@ -43,44 +42,41 @@
                                     <a class="twPc-bg twPc-block"></a>
 
                                     <div>
-                                        <div class="twPc-button">
-                                            <!-- Twitter Button | you can get from: https://about.twitter.com/tr/resources/buttons#follow -->
-                                            <a href="https://twitter.com/mertskaplan" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false" data-dnt="true">Follow @mertskaplan</a>
-                                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                                            <!-- Twitter Button -->
-                                        </div>
 
-                                        <a title="Mert Salih Kaplan" href="https://twitter.com/mertskaplan" class="twPc-avatarLink">
-                                            <img alt="Mert Salih Kaplan" src="http://127.0.0.1:8000/profilepics/default.png" class="twPc-avatarImg">
+                                        <a title="Mert Salih Kaplan" href="#" class="twPc-avatarLink">
+                                            <img alt="{{ $member->first_name.' '.$member->last_name }}" src="{{ asset('profilepics/'.$member->profile_image) }}" class="twPc-avatarImg">
                                         </a>
 
                                         <div class="twPc-divUser">
                                             <div class="twPc-divName">
-                                                <a href="https://twitter.com/mertskaplan">Mert S. Kaplan</a>
+                                                <a href="#">{{ $member->first_name.' '.$member->last_name }}</a>
                                             </div>
                                             <span>
-				<a href="https://twitter.com/mertskaplan">@<span>mertskaplan</span></a>
-			</span>
+                                                    <a href="#">@<span>mertskaplan</span></a>
+                                                </span>
                                         </div>
 
                                         <div class="twPc-divStats">
                                             <ul class="twPc-Arrange">
                                                 <li class="twPc-ArrangeSizeFit">
-                                                    <a href="https://twitter.com/mertskaplan" title="9.840 Tweet">
-                                                        <span class="twPc-StatLabel twPc-block">Tweets</span>
-                                                        <span class="twPc-StatValue">9.840</span>
+                                                    <a href="#" title="Bar Code">
+                                                        <span class="twPc-StatLabel twPc-block"></span>
+                                                        <span class="twPc-StatValue">
+                                                        <?php 		echo '<img src="data:image/png;base64,' . $barCode . '" alt="barcode"   />'; ?>
+                                                        </span>
+
                                                     </a>
                                                 </li>
                                                 <li class="twPc-ArrangeSizeFit">
-                                                    <a href="https://twitter.com/mertskaplan/following" title="885 Following">
-                                                        <span class="twPc-StatLabel twPc-block">Following</span>
-                                                        <span class="twPc-StatValue">885</span>
+                                                    <a href="#" title="Membership Number">
+                                                        <span class="twPc-StatLabel twPc-block">Membership #</span>
+                                                        <span class="twPc-StatValue">{{ $member->membership_number }}</span>
                                                     </a>
                                                 </li>
                                                 <li class="twPc-ArrangeSizeFit">
-                                                    <a href="https://twitter.com/mertskaplan/followers" title="1.810 Followers">
-                                                        <span class="twPc-StatLabel twPc-block">Followers</span>
-                                                        <span class="twPc-StatValue">1.810</span>
+                                                    <a href="#" title="1.810 Followers">
+                                                        <span class="twPc-StatLabel twPc-block">Epire Date</span>
+                                                        <span class="twPc-StatValue">{{ $member->expiration_date }}</span>
                                                     </a>
                                                 </li>
                                             </ul>
