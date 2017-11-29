@@ -1,6 +1,19 @@
  $(document).ready(function() {
         //table tools example
-        var table = $('#table1').DataTable();
+        var table = $('#table1').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'csv', 'excel', 'pdf', 'print'
+            ],
+            "order": [
+                [0, "desc"]
+            ],
+            "scrollY": true,
+            "deferRender": true
+        });
+
+
+
         var tt = new $.fn.dataTable.TableTools(table,{"sSwfPath": "vendors/datatables/extensions/TableTools/swf/copy_csv_xls.swf"});
         
         $('div.tools').append(tt.fnContainer());

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Validator;
 use App\User;
 use Intervention\Image;
@@ -12,6 +13,8 @@ use App\Jobs\SendVerificationEmail;
 use App\Jobs\ExpireEmailLink;
 use Mail;
 use App\Mail\verifyEmail;
+use Illuminate\Support\Facades\DB;
+use Plivo;
 
 
 class MemberController extends Controller
@@ -19,6 +22,8 @@ class MemberController extends Controller
 
 	public function __construct() {
 	$this->user = new User();
+	$this->plivo = new Plivo\RestAPI($auth_id = "MANDIWNGMYY2M2MJMXYT", $auth_token = "Nzk4M2E2ZmI4NjdjY2NkMTY0ZDUwY2E0NTlmMzkz");
+
 	}
 
 	public function showMember(){
@@ -28,6 +33,7 @@ class MemberController extends Controller
 //		$member = $this->user->where('id', Auth()->id())->with('Members');
 		$allMember = $this->user->where('created_by', Auth()->id())
 		                     ->where('type','!=','superUser')
+		                     ->where('type','!=','subuser')
 		                     ->where('type','!=','admin')->get();
 //		$totalMembers = Member::where('user_id', Auth()->id())->count();
 		//dd($member);
@@ -35,19 +41,19 @@ class MemberController extends Controller
 	}
 	public function saveMember(Request $request){
 
-//		$validatedData = $request->validate([
-//			'first_name' => 'required|string|max:255',
-//			'last_name' => 'required|string|max:255',
-//			'email' => 'required|string|email|max:255|unique:users',
-//			'phone' => 'required',
-//			'dob' => 'required',
-//			'expiration_date' => 'required',
-//			'postalcode' => 'required',
-//			'profile_image' => 'required|image',
-//			'password'  =>  'required|min:6',
-//			'cpassword'  =>  'required|same:password',
-//
-//		]);
+		$validatedData = $request->validate([
+			'first_name' => 'required|string|max:255',
+			'last_name' => 'required|string|max:255',
+			'email' => 'required|string|email|max:255|unique:users',
+			'phone' => 'required',
+			'dob' => 'required',
+			'expiration_date' => 'required',
+			'postalcode' => 'required',
+			'profile_image' => 'required|image',
+			'password'  =>  'required|min:6',
+			'cpassword'  =>  'required|same:password',
+
+		]);
 		if ($request->hasFile('profile_image')) {
 			$file = $request->profile_image;
 			$filename  = trim($request->first_name.$request->last_name).time().'.'.$file->getClientOriginalExtension();
@@ -59,10 +65,10 @@ class MemberController extends Controller
 			'last_name' => $request->last_name,
 			'username' => $request->first_name.$request->last_name,
 			'date_of_birth' => $request->dob,
-			'type' => 'subuser',
+			'type' => 'Members',
 			'phone' => $request->phone,
 			'created_by' => Auth()->id(),
-			'verify' => '1',
+			'verify' => 0,
 			'address' => $request->address,
 			'email' => $request->email,
 			'password' => bcrypt($request->password),
@@ -78,6 +84,10 @@ class MemberController extends Controller
 		]);
 
 		$id = $userSaved->id;
+
+		$this->user
+			->where('id', $id)
+		  ->update(array('membership_number' => $id.str_random(5)));
 		$count = 0;
 		if(isset($request->M_first_name)){
 		foreach($request->M_first_name as $key => $value)
@@ -90,12 +100,17 @@ class MemberController extends Controller
 			]);
 			$count++;
 		}
+			$this->user
+				->where('id', $id)
+				->update(array('total_members' => $count));
 		}
 
 //		$request->remember_token = md5(time() . $request->email);
 //		$UserData   = User::find($id);
 //		$this->sendEmail($UserData);
 
+
+		$request->session()->flash('success', 'Member successfuly Added.!');
 		return redirect()->route('showmember');
 	}
 
@@ -105,8 +120,17 @@ class MemberController extends Controller
 		Mail::to($thisUser->email)->send(new verifyEmail($thisUser));
 	}
 
-	public function verifyMemberbyEmail(){
-
+	public function sendVerification($MemberId , Request $request){
+		$user = $this->user->find($MemberId);
+		$sms = "Please Reply Back to this Number With your Membership Code:".$user->membership_number;
+		$params = array(
+			'src' => '+15876046444', // Sender's phone number with country code
+			'dst' => $user->phone, // receiver's phone number with country code
+			'text' => $sms // Your SMS text message
+		);
+		$response = $this->plivo->send_message($params);
+		$request->session()->flash('success', 'Verification SMS Sent tho user '.$user->first_name.' '.$user->last_name);
+		return redirect()->route('showmember');
 	}
 
 	/*Delete Employee

@@ -32,11 +32,19 @@ Route::group(array('prefix' => 'backend'), function ()
 	Route::get('add-member', function(){return view('backend.Members.addemember');})->name('add-member-form');
 	Route::post('save-member', 'MemberController@saveMember')->name('save-member');
 	Route::get('show-member', 'MemberController@showMember')->name('showmember');
-	Route::get('delete-member/{user_id}', 'MemberController@deletMember')->name('delete-member-data');
+	Route::get('delete-member/{member_id}', 'MemberController@deletMember')->name('delete-member-data');
+	Route::get('send-verification/{member_id}', 'MemberController@sendVerification')->name('send-verification');
 
 //	Route::group(array('middleware' => 'myAuth'), function () {
 //	}
 });
+
+
+
+Route::post('receive-sms', 'SmsSendController@receiveSms');
+
+
+
 
 Route::get('/', function () {
 	if (Auth::user()) {return redirect('/backend/dashboard');}
@@ -44,6 +52,20 @@ Route::get('/', function () {
 
 
 Route::get('verify/{email}/{token}' , 'MemberController@verifyMemberbyEmail')->name('sendEmailDone');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Route::get('/', function () {return view('auth.login');});
 //Route::get('/login', function () {return view('auth.login');});
 //

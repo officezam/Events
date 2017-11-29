@@ -34,7 +34,7 @@ class EmployeeController extends Controller
 			'type' => 'subuser',
 			'phone' => $request->phone,
 			'created_by' => Auth()->id(),
-			'verify' => '1',
+			'verify' => 1,
 			'address' => $request->address,
 			'email' => $request->email,
 			'password' => bcrypt($request->password),
@@ -51,7 +51,8 @@ class EmployeeController extends Controller
 
 		$employee = User::where('created_by', Auth()->id())
 		->where('type', '!=','admin')
-		->where('type', '!=','superuser')->get();
+		->where('type', '!=','superuser')
+		->where('type', '!=','Members')->get();
 		return view('backend.user.showemployee',compact('employee'));
 	}
 
