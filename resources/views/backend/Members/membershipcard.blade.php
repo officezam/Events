@@ -40,7 +40,7 @@
 
                                 <div class="twPc-div">
                                     <a class="twPc-bg twPc-block">
-                                        <img alt="{{ $member->first_name.' '.$member->last_name }}" src="{{ asset('img/membercard_logo.PNG') }}" class="">
+                                        <img alt="{{ $member->first_name.' '.$member->last_name }}" src="{{ asset('img/membercard_logo.PNG') }}" class="twPc-avatarlogo" >
                                     </a>
 
                                     <div>
@@ -60,22 +60,30 @@
                                             <ul class="twPc-Arrange">
                                                 <li class="twPc-ArrangeSizeFit">
                                                     <a href="#" title="Bar Code">
-                                                        <span class="twPc-StatLabel twPc-block"></span>
+                                                        <span class="twPc-StatLabel twPc-block">
+                                                            Membership #
+                                                                {{ $member->membership_number }}
+                                                        </span>
+
                                                         <span class="twPc-StatValue">
                                                         <?php 		echo '<img src="data:image/png;base64,'.$barCode.'" alt="barcode"   />'; ?>
                                                         </span>
                                                     </a>
                                                 </li>
                                                 <li class="twPc-ArrangeSizeFit">
+                                                    {{--<a href="#" title="Membership Number">--}}
+                                                        {{--<span class="twPc-StatLabel twPc-block">Valid From</span>--}}
+                                                        {{--<span class="twPc-StatValue">{{ $member->created_at }}</span>--}}
+                                                    {{--</a>--}}
                                                     <a href="#" title="Membership Number">
-                                                        <span class="twPc-StatLabel twPc-block">Membership #</span>
-                                                        <span class="twPc-StatValue">{{ $member->membership_number }}</span>
+                                                        <span class="twPc-StatLabel twPc-block">Valid To</span>
+                                                        <span class="twPc-StatValue">{{ $member->expiration_date }}</span>
                                                     </a>
                                                 </li>
                                                 <li class="twPc-ArrangeSizeFit">
                                                     <a href="#" title="1.810 Followers">
-                                                        <span class="twPc-StatLabel twPc-block">Epire Date</span>
-                                                        <span class="twPc-StatValue">{{ $member->expiration_date }}</span>
+                                                        <span class="twPc-StatLabel twPc-block">Date of birth</span>
+                                                        <span class="twPc-StatValue">{{ $member->date_of_birth }}</span>
                                                     </a>
                                                 </li>
                                             </ul>

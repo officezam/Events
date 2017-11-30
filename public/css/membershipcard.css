@@ -4,6 +4,7 @@
     border-radius: 6px;
     height: 200px;
     max-width: 340px; // orginal twitter width: 290px;
+    position: relative;
 }
 .twPc-bg {
     background-image: url("http://127.0.0.1:8000/img/600x200.jpg");
@@ -27,7 +28,7 @@
     border-radius: 6px;
     display: inline-block !important;
     float: left;
-    margin: -30px 5px 0 8px;
+    margin: -70px 5px 0 8px;
     max-width: 100%;
     padding: 1px;
     vertical-align: bottom;
@@ -37,8 +38,15 @@
     border-radius: 7px;
     box-sizing: border-box;
     color: #fff;
-    height: 72px;
-    width: 72px;
+    /*height: 72px;*/
+    /*width: 72px;*/
+}
+.twPc-avatarlogo {
+    width: 70px;
+    border: none;
+    position: absolute;
+    right: 13px;
+    top: 13px;
 }
 .twPc-divUser {
     margin: 5px 0 0;
@@ -89,4 +97,10 @@ ul.twPc-Arrange {
     overflow: hidden;
     text-transform: uppercase;
     transition: color 0.15s ease-in-out 0s;
+}
+.twPc-divStats ul li:first-child {
+    padding-top: 0;
+}
+.twPc-divStats ul li {
+    padding-top: 15px;
 }
