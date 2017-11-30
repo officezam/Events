@@ -78,7 +78,7 @@ ul.twPc-Arrange {
 }
 .twPc-StatValue {
     display: block;
-    font-size: 18px;
+    font-size: 10px;
     font-weight: 500;
     transition: color 0.15s ease-in-out 0s;
 }

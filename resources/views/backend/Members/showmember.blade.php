@@ -96,7 +96,7 @@
                                         <td>{{ $member->expiration_date }}</td>
                                         <td>
                                             <a href="{{ route('membership-card', $member->id) }}" >
-                                                <button type="button" class="btn btn-info">Send Verification</button>
+                                                <button type="button" class="btn btn-info">Membership Card</button>
                                             </a>
                                         </td>
                                         <td>

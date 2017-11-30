@@ -31,29 +31,29 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Add Member Form</h3>
                             <span class="pull-right">
-                                                    <i class="fa fa-fw fa-chevron-up clickable"></i>
-                                                    <i class="fa fa-fw fa-times removepanel clickable"></i>
-                                                </span>
+                                <i class="fa fa-fw fa-chevron-up clickable"></i>
+                                <i class="fa fa-fw fa-times removepanel clickable"></i>
+                            </span>
                         </div>
                         <div class="panel-body">
                             <div class="row">
 
                                 <div class="twPc-div">
-                                    <a class="twPc-bg twPc-block"></a>
+                                    <a class="twPc-bg twPc-block">
+                                        <img alt="{{ $member->first_name.' '.$member->last_name }}" src="{{ asset('img/membercard_logo.PNG') }}" class="">
+                                    </a>
 
                                     <div>
-
                                         <a title="Mert Salih Kaplan" href="#" class="twPc-avatarLink">
                                             <img alt="{{ $member->first_name.' '.$member->last_name }}" src="{{ asset('profilepics/'.$member->profile_image) }}" class="twPc-avatarImg">
                                         </a>
-
                                         <div class="twPc-divUser">
                                             <div class="twPc-divName">
                                                 <a href="#">{{ $member->first_name.' '.$member->last_name }}</a>
                                             </div>
-                                            <span>
-                                                    <a href="#">@<span>mertskaplan</span></a>
-                                                </span>
+                                            {{--<span>--}}
+                                                    {{--<a href="#">@<span>mertskaplan</span></a>--}}
+                                                {{--</span>--}}
                                         </div>
 
                                         <div class="twPc-divStats">
@@ -62,9 +62,8 @@
                                                     <a href="#" title="Bar Code">
                                                         <span class="twPc-StatLabel twPc-block"></span>
                                                         <span class="twPc-StatValue">
-                                                        <?php 		echo '<img src="data:image/png;base64,' . $barCode . '" alt="barcode"   />'; ?>
+                                                        <?php 		echo '<img src="data:image/png;base64,'.$barCode.'" alt="barcode"   />'; ?>
                                                         </span>
-
                                                     </a>
                                                 </li>
                                                 <li class="twPc-ArrangeSizeFit">
