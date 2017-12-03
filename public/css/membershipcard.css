@@ -7,7 +7,7 @@
     position: relative;
 }
 .twPc-bg {
-    background-image: url("http://127.0.0.1:8000/img/600x200.jpg");
+    background-image: url("http://144.217.243.235:3000/img/600x200.jpg");
     background-position: 0 50%;
     background-size: 100% auto;
     border-bottom: 1px solid #e1e8ed;
