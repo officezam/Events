@@ -2,13 +2,17 @@
 <!--page level css -->
 @section('pagecss')
     <!-- daterange picker -->
-    <link href="{{ asset('css/membershipcard.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/membershipcard.css') }}" rel="stylesheet" media="screen, print"  />
 
     <!--end of page level css-->
 @endsection
 <!--end of page level css-->
 
 @section('content')
+
+
+
+
     <!-- Right side column. Contains the navbar and content of the page -->
     <aside class="right-side">
         <section class="content-header">
@@ -37,9 +41,8 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-
                                 <div class="twPc-div">
-                                    <a class="twPc-bg twPc-block">
+                                    <a class="twPc-bg twPc-block" >
                                         <img alt="{{ $member->first_name.' '.$member->last_name }}" src="{{ asset('img/membercard_logo.PNG') }}" class="twPc-avatarlogo" >
                                     </a>
 
