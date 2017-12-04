@@ -3,7 +3,19 @@
         var table = $('#table1').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'csv', 'excel', 'pdf', 'print'
+                {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: [ 0, 3, 4 ]
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        columns: [ 0, 3, 4 ]
+                    }
+                },
+
             ],
             "order": [
                 [0, "desc"]

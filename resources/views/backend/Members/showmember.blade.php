@@ -58,7 +58,14 @@
                                 </div>
                             @endif
 
-
+<style>
+    .limited{
+        white-space: nowrap;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
 
                             <table class="table table-striped table-responsive" id="table1">
                                 <thead>
@@ -70,7 +77,7 @@
                                     {{--<th>Type</th>--}}
                                     <th>Birthday</th>
                                     <th>phone</th>
-                                    {{--<th>address</th>--}}
+                                    <th>address</th>
                                     <th>postalcode</th>
                                     <th>Total Members</th>
                                     <th>Membership Number</th>
@@ -89,7 +96,7 @@
                                         {{--                                    <td>{{ $member->type }}</td>--}}
                                         <td>{{ $member->date_of_birth }}</td>
                                         <td>{{ $member->phone }}</td>
-                                        {{--<td>{{ $member->address }}</td>--}}
+                                        <td class='limited'>{{ $member->address }}</td>
                                         <td>{{ $member->postalcode }}</td>
                                         <td>{{ $member->total_members }}</td>
                                         <td>{{ $member->membership_number }}</td>
@@ -124,7 +131,7 @@
                                     {{--<th>Type</th>--}}
                                     <th>Birthday</th>
                                     <th>phone</th>
-                                    {{--<th>address</th>--}}
+                                    <th>address</th>
                                     <th>postalcode</th>
                                     <th>Total Members</th>
                                     <th>Membership Number</th>
