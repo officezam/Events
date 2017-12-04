@@ -151,7 +151,8 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-3" for="phoneNumber">Phone:</label>
                                                 <div class="col-md-9">
-                                                    <input type="tel" class="form-control" id="phoneNumber" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
+                                                    <input type="tel" class="form-control" id="phoneNumber" name="phone" placeholder="Write Member Phone e.g(+15876046444)" value="{{ old('phone') }}" >
+                                                    <p class="alert-info">Please Enter Valid Phone Number Like <b style="color: black">+15876046444</b></p>
                                                     @if ($errors->has('phone'))
                                                         <div class=" has-error">
                                                         <span class="control-label has-error">
