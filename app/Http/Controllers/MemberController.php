@@ -87,7 +87,7 @@ class MemberController extends Controller
 
 		$this->user
 			->where('id', $id)
-		  ->update(array('membership_number' => $id.str_random(5)));
+		  ->update(array('membership_number' => '00'.$id));
 		$count = 0;
 		if(isset($request->M_first_name)){
 		foreach($request->M_first_name as $key => $value)
@@ -105,9 +105,9 @@ class MemberController extends Controller
 				->update(array('total_members' => $count));
 		}
 
-//		$request->remember_token = md5(time() . $request->email);
-//		$UserData   = User::find($id);
-//		$this->sendEmail($UserData);
+		$request->remember_token = md5(time() . $request->email);
+		$UserData   = User::find($id);
+		$this->sendEmail($UserData);
 
 
 		$request->session()->flash('success', 'Member successfuly Added.!');

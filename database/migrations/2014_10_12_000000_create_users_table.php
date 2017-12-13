@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('verify');
             $table->string('email')->unique;
             $table->string('password');
+            $table->string('gender');
             $table->string('address');
             $table->string('profile_image');
             $table->string('postalcode');

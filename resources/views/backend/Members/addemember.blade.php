@@ -90,12 +90,12 @@
                                             <div class="form-group">
                                                 <label class="control-label col-md-3">Date of Birth:</label>
                                                 <div class="col-md-9">
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control pull-right" id="dob" name="dob" value="{{ old('dob') }}">
                                                     </div>
-                                                    <input type="text" class="form-control pull-right" id="dob" name="dob" value="{{ old('dob') }}">
-                                                </div>
                                                     @if ($errors->has('dob'))
                                                         <div class=" has-error">
                                                         <span class="control-label has-error">
@@ -176,6 +176,24 @@
                                                     @endif
                                                 </div>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="cpassword">Gender:</label>
+                                                <div class="col-md-9">
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="gender" id="gender" value="male" checked="">Male</label>
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="gender" id="gender" value="female">Female</label>
+                                                    @if ($errors->has('gender'))
+                                                        <div class=" has-error">
+                                                        <span class="control-label has-error">
+                                                            <strong>{{ $errors->first('gender') }}</strong>
+                                                        </span>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
                                             <div class="form-group">
                                                 <label class="control-label col-md-3">Expiration Date:</label>
                                                 <div class="col-md-9">
