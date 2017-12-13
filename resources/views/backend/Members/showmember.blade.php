@@ -79,6 +79,7 @@
                                     <th>phone</th>
                                     <th>address</th>
                                     <th>postalcode</th>
+                                    <th>Gender</th>
                                     <th>Total Members</th>
                                     <th>Membership Number</th>
                                     <th>Expiration Date</th>
@@ -98,6 +99,7 @@
                                         <td>{{ $member->phone }}</td>
                                         <td class='limited'>{{ $member->address }}</td>
                                         <td>{{ $member->postalcode }}</td>
+                                        <td>{{ $member->gender }}</td>
                                         <td>{{ $member->total_members }}</td>
                                         <td>{{ $member->membership_number }}</td>
                                         <td>{{ $member->expiration_date }}</td>
@@ -133,6 +135,7 @@
                                     <th>phone</th>
                                     <th>address</th>
                                     <th>postalcode</th>
+                                    <th>Gender</th>
                                     <th>Total Members</th>
                                     <th>Membership Number</th>
                                     <th>Expiration Date</th>
