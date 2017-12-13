@@ -36,8 +36,10 @@ Route::group(array('prefix' => 'backend'), function ()
 	Route::get('delete-member/{member_id}', 'MemberController@deletMember')->name('delete-member-data');
 	Route::get('send-verification/{member_id}', 'MemberController@sendVerification')->name('send-verification');
 
-//	Route::group(array('middleware' => 'myAuth'), function () {
-//	}
+
+	Route::get('TestEmailSending', 'MemberController@TestEmailSending');
+
+
 });
 
 

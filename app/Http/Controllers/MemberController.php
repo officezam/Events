@@ -116,9 +116,14 @@ class MemberController extends Controller
 	}
 
 
+	public function TestEmailSending(){
+		$UserData   = User::find(5);
+		$response = $this->sendEmail($UserData);
+		dd($response);
+	}
 	public function sendEmail($thisUser){
 
-		Mail::to($thisUser->email)->send(new verifyEmail($thisUser));
+		return Mail::to($thisUser->email)->send(new verifyEmail($thisUser));
 	}
 
 	public function sendVerification($MemberId , Request $request){
