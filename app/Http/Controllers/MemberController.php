@@ -67,6 +67,7 @@ class MemberController extends Controller
 			'date_of_birth' => $request->dob,
 			'type' => 'Members',
 			'phone' => $request->phone,
+			'gender' => $request->gender,
 			'created_by' => Auth()->id(),
 			'verify' => 0,
 			'address' => $request->address,
