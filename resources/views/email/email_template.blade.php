@@ -11,7 +11,7 @@
         <div class=”panel panel-default”>
             <div class=”panel-heading”>Registration Confirmed</div>
             <div class=”panel-body”>
-                Your Email is successfully verified. Click here to
+                Your Email is successfully verified. Click here to {{ $thisUser->email }}
                 <a href=”{{route('sendEmailDone', ["email" => $user->email,'vrifytoken'=>$user->berifytoken])}}”>login</a>
             </div>
         </div>
