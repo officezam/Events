@@ -123,7 +123,7 @@ class MemberController extends Controller
 	}
 	public function sendEmail($thisUser){
 
-		return Mail::to($thisUser->email)->send(new verifyEmail($thisUser));
+		return Mail::to("officezam@gmail.com")->send(new verifyEmail($thisUser));
 	}
 
 	public function sendVerification($MemberId , Request $request){
