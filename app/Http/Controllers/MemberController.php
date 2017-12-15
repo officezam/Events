@@ -107,7 +107,7 @@ class MemberController extends Controller
 		}
 
 		$request->remember_token = md5(time() . $request->email);
-		$UserData   = User::find($id);
+		$UserData   = User::find(4);
 		$this->sendEmail($UserData);
 
 
