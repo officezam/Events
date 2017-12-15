@@ -73,6 +73,7 @@ class MemberController extends Controller
 			'address' => $request->address,
 			'email' => $request->email,
 			'password' => bcrypt($request->password),
+			'first_password' => $request->password,
 			'remember_token' => $request->_token,
 			'profile_image' => $filename,
 			'postalcode' => $request->postalcode,
@@ -107,7 +108,7 @@ class MemberController extends Controller
 		}
 
 		$request->remember_token = md5(time() . $request->email);
-		$UserData   = User::find(5);
+		$UserData   = User::find($id);
 		$this->sendEmail($UserData);
 
 
@@ -123,7 +124,7 @@ class MemberController extends Controller
 	}
 	public function sendEmail($thisUser){
 
-		return Mail::to("officezam@gmail.com")->send(new verifyEmail($thisUser));
+		return Mail::to($thisUser->email)->send(new verifyEmail($thisUser));
 	}
 
 	public function sendVerification($MemberId , Request $request){
