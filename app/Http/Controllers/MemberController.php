@@ -117,8 +117,17 @@ class MemberController extends Controller
 
 
 	public function TestEmailSending(){
-		$UserData   = User::find(5);
+		$UserData   = User::find(4);
 		$response = $this->sendEmail($UserData);
+
+		$to = "officezam@gmail.com";
+		$subject = "My subject";
+		$txt = "Hello world!";
+		$headers = "From: joinmyseo@gmail.com" . "\r\n" .
+		           "CC: joinmyseo@gmail.com";
+
+		$resp = mail($to,$subject,$txt,$headers);
+		dump($resp);
 		dd($response);
 	}
 	public function sendEmail($thisUser){
